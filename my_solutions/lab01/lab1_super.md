@@ -3,11 +3,11 @@ wget http://data.cluster-lab.com/public-newprolab-com/advert.log.lzma -O /tmp/ad
 
 1. mapper.py
 
-`import sys`
+~~~~import sys
 
-`for line in sys.stdin:`
-    `tokens = line.strip().split(',')`
-    `print(tokens[2], '\t', tokens[4])`
+for line in sys.stdin:
+    tokens = line.strip().split(',')
+    print(tokens[2], '\t', tokens[4])~~~~
 
 ---------------------------
 
