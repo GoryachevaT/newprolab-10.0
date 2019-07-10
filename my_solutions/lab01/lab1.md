@@ -1,4 +1,5 @@
 1. скачать в директорию **/Users/antonina.goryacheva/Desktop/NewProLab/kk ключ npl.pem**
+
 2. поставить на него права 
 
 `$ chmod 0600 npl.pem (если мы перешли в эту директорию, иначе - прописать полный путь)`
@@ -22,6 +23,7 @@
 7. подключиться к машине
 
 `$ ssh -i ~/.ssh/npl.pem ubuntu@ec2-54-171-222-80.eu-west-1.compute.amazonaws.com`
+
 (после @ указать public DNS хоста из ЛК со статусом running)
 
 8. Ставим Ambari на сервер-менеджер (все как в инструкции)
@@ -41,6 +43,7 @@
 `$ apt-cache showpkg ambari-metrics-assembly`
 
 `$ apt-get install ambari-server`
+
 (тут была ошибка Unable to lock the administration directory (/var/lib/dpkg/), 
 надо просто подождать - мне помогло)
 
