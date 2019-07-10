@@ -1,13 +1,13 @@
 Загружаем данные с сервера NPL:
-	wget http://data.cluster-lab.com/public-newprolab-com/advert.log.lzma -O /tmp/advert.log.lzma
+wget http://data.cluster-lab.com/public-newprolab-com/advert.log.lzma -O /tmp/advert.log.lzma
 
-mapper.py
----------------------------
-import sys
+1. mapper.py
 
-for line in sys.stdin:
-    tokens = line.strip().split(',')
-    print(tokens[2], '\t', tokens[4])
+`import sys`
+
+`for line in sys.stdin:`
+    `tokens = line.strip().split(',')`
+    `print(tokens[2], '\t', tokens[4])`
 
 ---------------------------
 
