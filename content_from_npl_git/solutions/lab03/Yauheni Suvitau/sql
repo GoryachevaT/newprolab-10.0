@@ -1,0 +1,28 @@
+create external table evgeny_test3
+(uid string, url string)
+row format delimited
+fields terminated by '\t'
+location '/user/evgeny.suvitov/lab03_data_try2/';
+insert overwrite directory 'hdfs://master.cluster-lab.com:8020/user/evgeny.suvitov/lab03_result'
+row format delimited fields terminated by '\t' stored as textfile
+select t.uid,
+sum(case when s1 >= 10 or s2>=10 or s3>=10 then 1 else 0 end) f1,
+sum(case when s4 >= 10 or s5>=10 or s6>=10 then 1 else 0 end) f2,
+sum(case when s7 >= 10 or s8>=10 or s9>=10 then 1 else 0 end) f3,
+sum(case when s10 >= 10 or s11>=10 or s12>=10 then 1 else 0 end) f4
+from
+(select uid, 
+sum(case when url='cars.ru' then 1 else 0 end) s1,
+sum(case when url='avto-russia.ru' then 1 else 0 end) s2,
+sum(case when url='bmwclub.ru' then 1 else 0 end) s3,
+sum(case when url='postnauka.ru' then 1 else 0 end) s4,
+sum(case when url='plantarium.ru' then 1 else 0 end) s5,
+sum(case when url='lensart.ru' then 1 else 0 end) s6,
+sum(case when url='pass.rzd.ru' then 1 else 0 end) s7,
+sum(case when url='rzd.ru' then 1 else 0 end) s8,
+sum(case when url='vokrug.tv' then 1 else 0 end) s9,
+sum(case when url='apteka.ru' then 1 else 0 end) s10,
+sum(case when url='doctor.ufacity.info' then 1 else 0 end) s11,
+sum(case when url='womanhit.ru' then 1 else 0 end) s12
+from evgeny_test3 group by uid) t
+group by t.uid;
