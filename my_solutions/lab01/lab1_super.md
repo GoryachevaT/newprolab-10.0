@@ -1,19 +1,21 @@
 Загружаем данные с сервера NPL:
 wget http://data.cluster-lab.com/public-newprolab-com/advert.log.lzma -O /tmp/advert.log.lzma
 
-1. mapper.py
+**Mapper.py**
 
-~~~~import sys
+``` import sys
 
 for line in sys.stdin:
     tokens = line.strip().split(',')
-    print(tokens[2], '\t', tokens[4])~~~~
+    print(tokens[2], '\t', tokens[4]) 
+ ``` 
 
----------------------------
 
 
-reducer.py
----------------------------
+
+**Reducer.py**
+
+ ``` 
 import sys
 
 prev_key = None
@@ -29,10 +31,10 @@ for line in sys.stdin:
     sum += value
 if prev_key is not None:
     print('%s\t%.2f' % (prev_key, sum))
----------------------------
-
+ ``` 
+***MAPREDUCE JOB*
 (какая-то из джоб ниже, не помню точно, какая)
-
+ ``` 
 hadoop jar /usr/hdp/3.0.1.0-187/hadoop-mapreduce/hadoop-streaming.jar 
     -D mapred.reduce.tasks=1 
     -input /users/adv 
@@ -41,8 +43,8 @@ hadoop jar /usr/hdp/3.0.1.0-187/hadoop-mapreduce/hadoop-streaming.jar
     -mapper "python3 mapper.py" 
     -file /data/home/antonina.goryacheva/mapreduce/reducer.py 
     -reducer "python3 reducer.py"
-
-
+ ``` 
+ ``` 
 hadoop jar /data/home/antonina.goryacheva/mapreduce/hadoop-streaming.jar 
     -D mapred.reduce.tasks=1 
     -input /user/antonina.goryacheva/task1/students_scores.txt 
@@ -51,5 +53,5 @@ hadoop jar /data/home/antonina.goryacheva/mapreduce/hadoop-streaming.jar
     -mapper "python3 mapper.py" 
     -file reducer.py 
     -reducer "python3 reducer.py"
-
+ ``` 
 
