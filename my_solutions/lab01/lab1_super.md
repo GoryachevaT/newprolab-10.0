@@ -32,7 +32,8 @@ for line in sys.stdin:
 if prev_key is not None:
     print('%s\t%.2f' % (prev_key, sum))
  ``` 
-***MAPREDUCE JOB*
+**MAPREDUCE JOB**
+
 (какая-то из джоб ниже, не помню точно, какая)
  ``` 
 hadoop jar /usr/hdp/3.0.1.0-187/hadoop-mapreduce/hadoop-streaming.jar 
