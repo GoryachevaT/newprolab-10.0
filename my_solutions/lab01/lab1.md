@@ -1,15 +1,15 @@
 1. скачать в директорию /Users/antonina.goryacheva/Desktop/NewProLab/kk ключ npl.pem
 2. поставить на него права 
 
-**$ chmod 0600 npl.pem (если мы перешли в эту директорию, иначе - прописать полный путь)**
+**$ chmod 0600 npl.pem (если мы перешли в эту директорию, иначе - прописать полный путь) **
 
 3. скопировать ключ на тачку master.cluster-lab.com
 
-**$ scp ./npl.pem antonina.goryacheva@master.cluster-lab.com:~/npl.pem**
+**$ scp ./npl.pem antonina.goryacheva@master.cluster-lab.com:~/npl.pem **
 
 4. зайти на машину по ssh
 
-**$ ssh -i /Users/antonina.goryacheva/Desktop/NewProLab/kk/npl.pem antonina.goryacheva@master.cluster-lab.com*
+**$ ssh -i /Users/antonina.goryacheva/Desktop/NewProLab/kk/npl.pem antonina.goryacheva@master.cluster-lab.com **
 
 5. проверить, что ключ скопирован 
 
